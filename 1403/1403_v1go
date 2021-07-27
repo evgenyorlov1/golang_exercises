@@ -1,0 +1,40 @@
+package main
+
+import "fmt"
+
+var arr []int
+
+func f(n, sum int) {
+	if n == 1 {
+		arr = append(arr, sum)
+		return
+	}
+	if n < 1 {
+		return
+	}
+	if n%3 == 0 {
+		f(n/3, sum+5)
+	}
+	if n-4 >= 1 {
+		f(n-4, sum+2)
+	}
+}
+
+func main() {
+	var n int
+	fmt.Scan(&n)
+	f(n, 0)
+
+	min := 999
+	for _, v := range arr {
+		if min > v {
+			min = v
+		}
+	}
+
+	if len(arr) == 0 {
+		fmt.Print(0)
+	} else {
+		fmt.Print(min)
+	}
+}

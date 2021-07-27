@@ -10,29 +10,27 @@ func main() {
 	m := make(map[int]int)
 	for i := 0; i < n; i++ {
 		fmt.Scan(&val)
-		arr = append(arr, val)
 		_, ok := m[val]
 		if ok {
+			arr = append(arr, val)
 			m[val]++
 		} else {
 			m[val] = 1
 		}
 	}
 
-	max := -1
-	for _, v := range m {
-		if max < v {
-			max = v
-		}
+	if len(arr) == 0 {
+		fmt.Print("NO")
+		return
 	}
 
-	fmt.Println(max)
 	var result []int
-	for i := n - 1; i >= 0; i-- {
-		if m[arr[i]] == max {
+	for i := len(arr) - 1; i >= 0; i-- {
+		_, ok := m[arr[i]]
+		if ok {
 			result = append(result, arr[i])
-			delete(m, arr[i])
 		}
+		delete(m, arr[i])
 	}
 
 	for i := len(result) - 1; i >= 0; i-- {

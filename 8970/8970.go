@@ -11,8 +11,12 @@ func main() {
 		fmt.Scan(&val)
 		arr = append(arr, val)
 	}
-	fmt.Println(n / 2)
-	for i := 0; i < n/2; i++ {
-		fmt.Print(arr[i+n/2], " ", arr[i], " ")
+	even := n/2 + n%2
+	for i := 0; i < even; i++ {
+		if i+even > len(arr)-1 {
+			fmt.Print(arr[i])
+		} else {
+			fmt.Print(arr[i], " ", arr[i+even], " ")
+		}
 	}
 }
